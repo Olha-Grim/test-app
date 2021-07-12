@@ -3,19 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
+    "@craco/craco": "^6.1.1",
+    "babel-plugin-react-intl-auto": "^3.3.0",
+    "craco-antd": "^1.19.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-intl": "^5.15.7",
+    "react-scripts": "^4.0.3"
+  },
+  "devDependencies": {
+    "@svgr/cli": "^5.5.0",
+    "cross-env": "^7.0.3",
+    "env-cmd": "^10.1.0",
+    "extract-react-intl-messages": "^4.1.1",
+    "prettier": "^2.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "env-cmd cross-env-shell VENDOR_BRANCH=dev ./scripts/test.sh",
+    "develop": "env-cmd cross-env-shell ./scripts/develop.sh",
+    "build": "env-cmd cross-env-shell ./scripts/build.sh",
+    "####### Tools #########": "echo 1",
+    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
+    "update default translations": "extract-messages -l=en -o src/translations -d en --flat false './src/**/!(*.test).js'"
   },
   "eslintConfig": {
     "extends": [
